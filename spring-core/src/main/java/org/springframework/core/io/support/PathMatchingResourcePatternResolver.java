@@ -203,7 +203,7 @@ public class PathMatchingResourcePatternResolver implements ResourcePatternResol
 
 	private final ResourceLoader resourceLoader;
 
-	private PathMatcher pathMatcher = new AntPathMatcher();
+	private PathMatcher pathMatcher = new AntPathMatcher(); // 创建ant方式的路径匹配器 ant构建工具  Ant风格表达式
 
 
 	/**

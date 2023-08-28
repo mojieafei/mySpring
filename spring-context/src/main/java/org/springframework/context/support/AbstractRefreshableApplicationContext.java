@@ -65,10 +65,10 @@ import org.springframework.lang.Nullable;
 public abstract class AbstractRefreshableApplicationContext extends AbstractApplicationContext {
 
 	@Nullable
-	private Boolean allowBeanDefinitionOverriding;
+	private Boolean allowBeanDefinitionOverriding;  // 覆盖
 
 	@Nullable
-	private Boolean allowCircularReferences;
+	private Boolean allowCircularReferences;   // 循环依赖
 
 	/** Bean factory for this context. */
 	@Nullable
@@ -111,7 +111,6 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 		this.allowCircularReferences = allowCircularReferences;
 	}
 
-
 	/**
 	 * This implementation performs an actual refresh of this context's underlying
 	 * bean factory, shutting down the previous bean factory (if any) and
@@ -124,16 +123,22 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 			closeBeanFactory();
 		}
 		try {
+			// 创建DefaultListableBeanFactory 容器
 			DefaultListableBeanFactory beanFactory = createBeanFactory();
+			// 序列化id
 			beanFactory.setSerializationId(getId());
-			customizeBeanFactory(beanFactory);
-			loadBeanDefinitions(beanFactory);
+			customizeBeanFactory(beanFactory);// 定制BeanFactory
+			/*
+			** 重要！！！★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+			 */
+			loadBeanDefinitions(beanFactory); // 加载beanDefinition
 			this.beanFactory = beanFactory;
 		}
 		catch (IOException ex) {
 			throw new ApplicationContextException("I/O error parsing bean definition source for " + getDisplayName(), ex);
 		}
 	}
+
 
 	@Override
 	protected void cancelRefresh(BeansException ex) {

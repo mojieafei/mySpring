@@ -198,7 +198,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 	 *
 	 * @see MutablePropertySources
 	 * @see PropertySourcesPropertyResolver
-	 * @see org.springframework.context.ApplicationContextInitializer
+	 * @see org.springframework.context.ApplicationContextInitializer   模板方法
 	 */
 	protected void customizePropertySources(MutablePropertySources propertySources) {
 	}
@@ -384,7 +384,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public Map<String, Object> getSystemProperties() {
+	public Map<String, Object> getSystemProperties() {  // 系统配置值
 		try {
 			return (Map) System.getProperties();
 		}
@@ -410,7 +410,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 
 	@Override
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public Map<String, Object> getSystemEnvironment() {
+	public Map<String, Object> getSystemEnvironment() { // 系统环境值
 		if (suppressGetenvAccess()) {
 			return Collections.emptyMap();
 		}

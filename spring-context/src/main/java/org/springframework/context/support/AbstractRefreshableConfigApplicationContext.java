@@ -40,7 +40,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 		implements BeanNameAware, InitializingBean {
 
 	@Nullable
-	private String[] configLocations;
+	private String[] configLocations;  // 文件路径
 
 	private boolean setIdCalled = false;
 
@@ -71,7 +71,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 
 	/**
 	 * Set the config locations for this application context.
-	 * <p>If not set, the implementation may use a default as appropriate.
+	 * <p>If not set, the implementation may  use a default as appropriate.
 	 */
 	public void setConfigLocations(@Nullable String... locations) {
 		if (locations != null) {
@@ -122,7 +122,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 	 * @see org.springframework.core.env.Environment#resolveRequiredPlaceholders(String)
 	 */
 	protected String resolvePath(String path) {
-		return getEnvironment().resolveRequiredPlaceholders(path);
+		return getEnvironment().resolveRequiredPlaceholders(path);// 处理占位符
 	}
 
 

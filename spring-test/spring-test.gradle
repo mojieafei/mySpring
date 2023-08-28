@@ -2,6 +2,10 @@ description = "Spring TestContext Framework"
 
 apply plugin: "kotlin"
 
+tasks.withType(JavaCompile) {
+	options.encoding = "GBK"
+}
+
 dependencies {
 	compile(project(":spring-core"))
 	optional(project(":spring-aop"))

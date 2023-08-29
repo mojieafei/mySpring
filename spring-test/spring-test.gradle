@@ -6,6 +6,10 @@ tasks.withType(JavaCompile) {
 	options.encoding = "GBK"
 }
 
+group 'org.springframework'
+version '5.2.26.BUILD-SNAPSHOT'
+
+
 dependencies {
 	compile(project(":spring-core"))
 	optional(project(":spring-aop"))

@@ -433,7 +433,7 @@ public class BeanDefinitionParserDelegate {
 		if (containingBean == null) {
 			checkNameUniqueness(beanName, aliases, ele);
 		}
-
+		// 详细解析
 		AbstractBeanDefinition beanDefinition = parseBeanDefinitionElement(ele, beanName, containingBean);
 		if (beanDefinition != null) {
 			if (!StringUtils.hasText(beanName)) {
@@ -511,21 +511,21 @@ public class BeanDefinitionParserDelegate {
 			parent = ele.getAttribute(PARENT_ATTRIBUTE);
 		}
 
-		try {
+		try { // GenericBeanDefinition
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
-
+			// 解析bean标签的各种其他属性
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
-			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
-
+			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));// 设置description信息
+			// 解析元数据
 			parseMetaElements(ele, bd);
-			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
-			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
-
+			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());// 解析loookup-method属性
+			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());// 解析replace-method属性
+			// 解析构造函数
 			parseConstructorArgElements(ele, bd);
-			parsePropertyElements(ele, bd);
-			parseQualifierElements(ele, bd);
+			parsePropertyElements(ele, bd);// 解析property属性
+			parseQualifierElements(ele, bd);// 解析qualifier属性
 
-			bd.setResource(this.readerContext.getResource());
+			bd.setResource(this.readerContext.getResource());//
 			bd.setSource(extractSource(ele));
 
 			return bd;
@@ -1379,16 +1379,16 @@ public class BeanDefinitionParserDelegate {
 	 */
 	@Nullable
 	public BeanDefinition parseCustomElement(Element ele, @Nullable BeanDefinition containingBd) {
-		String namespaceUri = getNamespaceURI(ele);
+		String namespaceUri = getNamespaceURI(ele); // 获取对应的命名空间
 		if (namespaceUri == null) {
 			return null;
 		}
-		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri);
+		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri); // 找到handler
 		if (handler == null) {
 			error("Unable to locate Spring NamespaceHandler for XML schema namespace [" + namespaceUri + "]", ele);
 			return null;
 		}
-		return handler.parse(ele, new ParserContext(this.readerContext, this, containingBd));
+		return handler.parse(ele, new ParserContext(this.readerContext, this, containingBd)); // 解析
 	}
 
 	/**

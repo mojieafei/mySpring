@@ -108,7 +108,7 @@ public class XmlValidationModeDetector {
 					break;
 				}
 			}
-			return (isDtdValidated ? VALIDATION_DTD : VALIDATION_XSD);
+			return (isDtdValidated ? VALIDATION_DTD : VALIDATION_XSD); // 两种解析方式
 		}
 		catch (CharConversionException ex) {
 			// Choked on some character encoding...

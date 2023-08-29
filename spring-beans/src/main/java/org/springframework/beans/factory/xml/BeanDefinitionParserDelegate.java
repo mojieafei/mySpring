@@ -433,7 +433,7 @@ public class BeanDefinitionParserDelegate {
 		if (containingBean == null) {
 			checkNameUniqueness(beanName, aliases, ele);
 		}
-		// ÏêÏ¸½âÎö
+		// ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½
 		AbstractBeanDefinition beanDefinition = parseBeanDefinitionElement(ele, beanName, containingBean);
 		if (beanDefinition != null) {
 			if (!StringUtils.hasText(beanName)) {
@@ -513,17 +513,17 @@ public class BeanDefinitionParserDelegate {
 
 		try { // GenericBeanDefinition
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
-			// ½âÎöbean±êÇ©µÄ¸÷ÖÖÆäËûÊôĞÔ
+			// ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½Ç©ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
-			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));// ÉèÖÃdescriptionĞÅÏ¢
-			// ½âÎöÔªÊı¾İ
+			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));// ï¿½ï¿½ï¿½ï¿½descriptionï¿½ï¿½Ï¢
+			// ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½
 			parseMetaElements(ele, bd);
-			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());// ½âÎöloookup-methodÊôĞÔ
-			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());// ½âÎöreplace-methodÊôĞÔ
-			// ½âÎö¹¹Ôìº¯Êı
+			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());// ï¿½ï¿½ï¿½ï¿½loookup-methodï¿½ï¿½ï¿½ï¿½
+			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());// ï¿½ï¿½ï¿½ï¿½replace-methodï¿½ï¿½ï¿½ï¿½
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
 			parseConstructorArgElements(ele, bd);
-			parsePropertyElements(ele, bd);// ½âÎöpropertyÊôĞÔ
-			parseQualifierElements(ele, bd);// ½âÎöqualifierÊôĞÔ
+			parsePropertyElements(ele, bd);// ï¿½ï¿½ï¿½ï¿½propertyï¿½ï¿½ï¿½ï¿½
+			parseQualifierElements(ele, bd);// ï¿½ï¿½ï¿½ï¿½qualifierï¿½ï¿½ï¿½ï¿½
 
 			bd.setResource(this.readerContext.getResource());//
 			bd.setSource(extractSource(ele));
@@ -1379,16 +1379,16 @@ public class BeanDefinitionParserDelegate {
 	 */
 	@Nullable
 	public BeanDefinition parseCustomElement(Element ele, @Nullable BeanDefinition containingBd) {
-		String namespaceUri = getNamespaceURI(ele); // »ñÈ¡¶ÔÓ¦µÄÃüÃû¿Õ¼ä
+		String namespaceUri = getNamespaceURI(ele); // å‘½åç©ºé—´
 		if (namespaceUri == null) {
 			return null;
 		}
-		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri); // ÕÒµ½handler
+		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri); // æ‰¾åˆ°handler
 		if (handler == null) {
 			error("Unable to locate Spring NamespaceHandler for XML schema namespace [" + namespaceUri + "]", ele);
 			return null;
 		}
-		return handler.parse(ele, new ParserContext(this.readerContext, this, containingBd)); // ½âÎö
+		return handler.parse(ele, new ParserContext(this.readerContext, this, containingBd)); // ï¿½ï¿½ï¿½ï¿½
 	}
 
 	/**

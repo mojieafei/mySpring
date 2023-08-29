@@ -3,7 +3,7 @@ group 'org.springframework'
 version '5.2.26.BUILD-SNAPSHOT'
 
 tasks.withType(JavaCompile) {
-    options.encoding = "GBK"
+    options.encoding = "UTF-8"
 }
 
 repositories {

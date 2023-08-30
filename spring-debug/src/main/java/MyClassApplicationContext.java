@@ -1,3 +1,5 @@
+import org.flagAware.MyAware;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,8 +18,10 @@ public class MyClassApplicationContext extends ClassPathXmlApplicationContext {
 
 	@Override
 	protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
+		beanFactory.addBeanPostProcessor(new MyAware());
 		super.setAllowBeanDefinitionOverriding(false);
 		super.setAllowCircularReferences(false);
 		super.customizeBeanFactory(beanFactory);
 	}
+
 }

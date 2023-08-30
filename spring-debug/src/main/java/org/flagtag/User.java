@@ -1,7 +1,7 @@
 package org.flagtag;
 
 public class User {
-	private String userName;
+	public String userName;
 	private String phone;
 	private String email;
 
@@ -27,5 +27,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"userName='" + userName + '\'' +
+				", phone='" + phone + '\'' +
+				", email='" + email + '\'' +
+				'}';
 	}
 }

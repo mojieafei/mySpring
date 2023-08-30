@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="org.flagEditor.CustomAddress" id="address">
+		<property name="name" value="ymt"></property>
+ 		<property name="address" value="北京市_延庆区_旧县镇"></property>
+ 	</bean>
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+<!--		第一种方式-->
+<!--		<property name="propertyEditorRegistrars">-->
+<!--			<list>-->
+<!--				<bean class="org.flagEditor.AddressEditorRegistrar"></bean>-->
+<!--			</list>-->
+
+<!--		</property>-->
+		<!--		第二种方式-->
+			<property name="customEditors">
+				<map>
+					<entry key="org.flagEditor.AddressEditor" value="org.flagEditor.AddressEditor"></entry>
+				</map>
+			</property>
+	</bean>
+</beans>

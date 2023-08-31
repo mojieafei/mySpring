@@ -7,6 +7,7 @@
 	   					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	   					http://www.ymt.org/schema/ymt https://www.ymt.org/schema/ymt.xsd
 						">
+	<context:component-scan base-package="org.flagAutoWired"/>
 	<ymt:user id="ymt" email="daveafei@hotmail.com" phone="1388888888" userName="ymt"/>
 	<bean id="aService" class="org.springframework.AService">
 		<constructor-arg index="0" value="2">
@@ -16,4 +17,6 @@
 <!--		<meta key="sdfj" value="jlksdjfl"/>-->
 		<property name="name" value="shabi"></property>
 	</bean>
+<!--	注入 BeanFactoryPostProcessor 方式1-->
+<!--	<bean id="MyBeanFactoryPostProcessor" class="MyBeanFactoryPostProcessor"></bean>-->
 </beans>

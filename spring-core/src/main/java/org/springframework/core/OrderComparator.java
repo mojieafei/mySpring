@@ -76,13 +76,14 @@ public class OrderComparator implements Comparator<Object> {
 	private int doCompare(@Nullable Object o1, @Nullable Object o2, @Nullable OrderSourceProvider sourceProvider) {
 		boolean p1 = (o1 instanceof PriorityOrdered);
 		boolean p2 = (o2 instanceof PriorityOrdered);
+		// -1  就不用颠倒  o1 实现  o2没有  那么 o1排前面
 		if (p1 && !p2) {
 			return -1;
-		}
+		} // 颠倒  o2实现了  o1 没有
 		else if (p2 && !p1) {
 			return 1;
 		}
-
+		// 同时的话  就无所谓了
 		int i1 = getOrder(o1, sourceProvider);
 		int i2 = getOrder(o2, sourceProvider);
 		return Integer.compare(i1, i2);

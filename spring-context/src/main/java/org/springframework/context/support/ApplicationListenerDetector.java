@@ -31,6 +31,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.ObjectUtils;
 
 /**
+ * 两个作用    一  实例化完成之后   如果bean的单例并且属于ApplicationListener接口 则加入多播器
+ * 			  二	bean销毁之前 从多播器中删除
  * {@code BeanPostProcessor} that detects beans which implement the {@code ApplicationListener}
  * interface. This catches beans that can't reliably be detected by {@code getBeanNamesForType}
  * and related operations which only work against top-level beans.

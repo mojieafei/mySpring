@@ -87,7 +87,7 @@ public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 
 		// Actually scan for bean definitions and register them.
 		ClassPathBeanDefinitionScanner scanner = configureScanner(parserContext, element);
-		Set<BeanDefinitionHolder> beanDefinitions = scanner.doScan(basePackages);
+		Set<BeanDefinitionHolder> beanDefinitions = scanner.doScan(basePackages);// 执行扫描
 		registerComponents(parserContext.getReaderContext(), beanDefinitions, element);
 
 		return null;
@@ -134,7 +134,7 @@ public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 
 	protected void registerComponents(
 			XmlReaderContext readerContext, Set<BeanDefinitionHolder> beanDefinitions, Element element) {
-
+		// 扫描方法
 		Object source = readerContext.extractSource(element);
 		CompositeComponentDefinition compositeDef = new CompositeComponentDefinition(element.getTagName(), source);
 
@@ -148,6 +148,7 @@ public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 			annotationConfig = Boolean.parseBoolean(element.getAttribute(ANNOTATION_CONFIG_ATTRIBUTE));
 		}
 		if (annotationConfig) {
+			// 加载第一步
 			Set<BeanDefinitionHolder> processorDefinitions =
 					AnnotationConfigUtils.registerAnnotationConfigProcessors(readerContext.getRegistry(), source);
 			for (BeanDefinitionHolder processorDefinition : processorDefinitions) {

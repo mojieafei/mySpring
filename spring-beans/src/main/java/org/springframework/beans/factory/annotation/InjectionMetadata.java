@@ -223,6 +223,7 @@ public class InjectionMetadata {
 				throws Throwable {
 
 			if (this.isField) {
+				// 反射自动注入
 				Field field = (Field) this.member;
 				ReflectionUtils.makeAccessible(field);
 				field.set(target, getResourceToInject(target, requestingBeanName));
